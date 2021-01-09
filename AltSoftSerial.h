@@ -60,13 +60,13 @@ public:
 	using Print::write;
 	static void flushInput();
 	static void flushOutput();
-	// for drop-in compatibility with NewSoftSerial, rxPin & txPin ignored
-	AltSoftSerial(uint8_t rxPin, uint8_t txPin, bool inverse = false) { }
+	// for drop-in compatibility with SoftwareSerial, rxPin, txPin and inverse are ignored
+	AltSoftSerial(uint8_t /* rxPin */, uint8_t /* txPin */, bool /* inverse */ = false ) { }
 	bool listen() { return false; }
 	bool isListening() { return true; }
 	bool overflow() { bool r = timing_error; timing_error = false; return r; }
 	static int library_version() { return 1; }
-	static void enable_timer0(bool enable) { }
+	static void enable_timer0(bool /* enable */) { }
 	static bool timing_error;
 private:
 	static void init(uint32_t cycles_per_bit);
